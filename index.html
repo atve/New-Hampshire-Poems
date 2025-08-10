@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Poem Listening Gallery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <meta name="color-scheme" content="light dark">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Poem Listening Gallery</h1>
+    <p class="subtitle">Browse, play, and share individual poem recordings.</p>
+    <div class="controls">
+      <input id="search" type="search" placeholder="Search titles…" aria-label="Search poems">
+      <button id="stopAll" type="button" title="Stop all audio">Stop all</button>
+    </div>
+  </header>
+
+  <main id="list" class="poem-list" aria-live="polite"></main>
+
+  <template id="poem-card">
+    <article class="card">
+      <div class="card-text">
+        <h2 class="title"></h2>
+        <p class="byline"></p>
+        <div class="actions">
+          <button class="play" type="button">Play</button>
+          <a class="direct" target="_blank" rel="noopener">Open file</a>
+          <button class="share" type="button">Copy link</button>
+        </div>
+      </div>
+      <audio class="player" preload="metadata" controls></audio>
+    </article>
+  </template>
+
+  <footer class="site-footer">
+    <p>Tip: each poem has its own shareable link (look for the “Copy link” button). Add or edit poems in <code>poems.js</code>.</p>
+  </footer>
+
+  <script type="module" src="poems.js"></script>
+  <script type="module" src="main.js"></script>
+</body>
+</html>

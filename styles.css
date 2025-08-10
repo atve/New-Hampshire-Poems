@@ -1,0 +1,94 @@
+/* Basic, modern styling; adjusts to light/dark mode automatically. */
+:root{
+  --bg: Canvas;
+  --text: CanvasText;
+  --muted: color-mix(in oklab, var(--text) 40%, var(--bg));
+  --accent: #4b7bec;
+  --ring: color-mix(in oklab, var(--accent) 40%, white);
+  --card: color-mix(in oklab, var(--bg) 92%, var(--text));
+  --shadow: color-mix(in oklab, var(--text) 8%, transparent);
+}
+
+*{ box-sizing: border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.55;
+}
+
+.site-header{
+  padding: clamp(16px, 3vw, 28px) clamp(16px, 4vw, 48px);
+  border-bottom: 1px solid var(--shadow);
+}
+.site-header h1{
+  margin: 0 0 4px 0;
+  font-size: clamp(22px, 3.5vw, 36px);
+}
+.subtitle{ margin: 0 0 16px 0; color: var(--muted); }
+.controls{ display: flex; gap: 10px; flex-wrap: wrap; }
+.controls input[type="search"]{
+  flex: 1 1 280px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--shadow);
+  outline: none;
+}
+.controls input[type="search"]:focus{
+  border-color: var(--accent);
+  box-shadow: 0 0 0 6px var(--ring);
+}
+.controls button{
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--shadow);
+  background: var(--card);
+  cursor: pointer;
+}
+
+.poem-list{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+  padding: clamp(16px, 3vw, 28px);
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+.card{
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  padding: 16px;
+  border-radius: 16px;
+  background: var(--card);
+  box-shadow: 0 10px 20px var(--shadow);
+  outline: 1px solid var(--shadow);
+}
+.card:target{ outline: 2px solid var(--accent); }
+.card-text{ display: grid; gap: 8px; }
+.title{ margin: 0; font-size: 18px; }
+.byline{ margin: 0; color: var(--muted); }
+.actions{ display:flex; gap:8px; flex-wrap: wrap; }
+.actions button, .actions a{
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--shadow);
+  background: white;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+@media (prefers-color-scheme: dark){
+  .actions button, .actions a{ background: color-mix(in oklab, var(--bg) 85%, var(--text)); }
+}
+
+.player{ width: 100%; }
+.site-footer{
+  padding: 24px clamp(16px, 4vw, 48px);
+  color: var(--muted);
+  border-top: 1px solid var(--shadow);
+}
+code{ background: color-mix(in oklab, var(--bg) 85%, var(--text)); padding: 2px 6px; border-radius: 6px; }
